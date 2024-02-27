@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// User model
+model User {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId // Unique ID for each user
+  email         String          @unique // User's email address (used for login)
+  password      String // User's hashed password
+  firstName     String // User's first name
+  lastName      String // User's last name
+  dueDate       DateTime? // Due date of the pregnancy
+  HealthMetric  HealthMetric[]
+  HealthInsight HealthInsight[]
+
+  Session Session[]
+}
+
+model Session {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
+// HealthMetric model
+model HealthMetric {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId // Unique ID for each health metric entry
+  user       User     @relation(fields: [userId], references: [id]) // Relationship with User model
+  userId     String   @db.ObjectId // ID of the user who recorded the health metric
+  metricType String // Type of health metric (e.g., weight, blood pressure)
+  value      Float // Value of the health metric
+  recordedAt DateTime // Timestamp when the metric was recorded
+}
+
+// HealthInsight model
+model HealthInsight {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId // Unique ID for each health insight
+  user      User     @relation(fields: [userId], references: [id]) // Relationship with User model
+  userId    String   @db.ObjectId // ID of the user for whom the insight is generated
+  message   String // AI-generated health insight message
+  createdAt DateTime @default(now()) // Timestamp when the insight was generated
+}
+
+// Article model
+model Article {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId // Unique ID for each article
+  title       String // Title of the article
+  content     String // Content of the article (can be text, HTML, or markdown)
+  author      String? // Author of the article (optional)
+  publishedAt DateTime // Timestamp when the article was published
+  url         String? // URL of the article (optional)
+}
