@@ -65,8 +65,9 @@ model HealthInsight {
 model Article {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId // Unique ID for each article
   title       String // Title of the article
-  content     String // Content of the article (can be text, HTML, or markdown)
+  description String? // Content of the article (can be text, HTML, or markdown)
   author      String? // Author of the article (optional)
-  publishedAt DateTime // Timestamp when the article was published
+  uploadedAt  DateTime @default(now()) // Timestamp when the article was uploaded
+  updatedAt   DateTime @updatedAt // Timestamp when the article was last updated
   url         String? // URL of the article (optional)
 }

@@ -1,16 +1,16 @@
 import { validateRequest } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
-export default async function ProtectedLayout({
+export default async function AdminProtectedLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const { user } = await validateRequest();
 
-  if (!user) {
+  if (user?.role !== "ADMIN") {
     return redirect("/");
   }
 
-  return <div className="mx-auto max-w-6xl p-4">{children}</div>;
+  return <>{children}</>;
 }

@@ -36,7 +36,7 @@ export const validateRequest = cache(async () => {
       cookies().set(
         sessionCookie.name,
         sessionCookie.value,
-        sessionCookie.attributes
+        sessionCookie.attributes,
       );
     }
     if (!session) {
@@ -44,7 +44,7 @@ export const validateRequest = cache(async () => {
       cookies().set(
         sessionCookie.name,
         sessionCookie.value,
-        sessionCookie.attributes
+        sessionCookie.attributes,
       );
     }
   } catch {
@@ -69,5 +69,6 @@ declare module "lucia" {
     firstName: string;
     lastName: string;
     dueDate: string;
+    role: "USER" | "ADMIN";
   }
 }

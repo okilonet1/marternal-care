@@ -38,3 +38,12 @@ export const SignInSchema = z.object({
   }),
   password: z.string(),
 });
+
+export const ResourceUploadSchema = z.object({
+  title: z.string().min(3).max(255),
+  author: z.string().min(1).max(255).optional(),
+  description: z.string().min(10),
+  doc: z.custom<File[]>().refine((files) => {
+    return files.length > 0;
+  }, "Please Upload a Resume"),
+});
