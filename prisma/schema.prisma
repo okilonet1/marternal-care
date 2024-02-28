@@ -23,15 +23,15 @@ model User {
   dueDate       DateTime? // Due date of the pregnancy
   HealthMetric  HealthMetric[]
   HealthInsight HealthInsight[]
-
-  Session Session[]
+  Session       Session[]
 }
 
 model Session {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @map("_id")
   userId    String   @db.ObjectId
   expiresAt DateTime
   user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+  expiresIn Int
 }
 
 // HealthMetric model

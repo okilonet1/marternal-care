@@ -16,8 +16,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { SignUpSchema } from "@/types";
 import { signUp } from "@/actions/auth.actions";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export function SignUpForm() {
+  const router = useRouter();
   const form = useForm<z.infer<typeof SignUpSchema>>({
     resolver: zodResolver(SignUpSchema),
     defaultValues: {
@@ -26,13 +29,19 @@ export function SignUpForm() {
       confirmPassword: "",
       firstName: "",
       lastName: "",
-      dueDate: new Date(),
+      dueDate: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof SignUpSchema>) {
+  async function onSubmit(values: z.infer<typeof SignUpSchema>) {
     console.log(values);
-    signUp(values);
+    const res = await signUp(values);
+    if (res.error) {
+      toast.error(res.error);
+    } else if (res.success) {
+      toast.success("Account created successfully!");
+      router.push("/dashboard");
+    }
   }
 
   return (
@@ -73,7 +82,7 @@ export function SignUpForm() {
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Confirm Password</FormLabel>
               <FormControl>
                 <Input placeholder="****" type="password" {...field} />
               </FormControl>
@@ -86,7 +95,7 @@ export function SignUpForm() {
           name="firstName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>First Name</FormLabel>
               <FormControl>
                 <Input placeholder="Jane" {...field} />
               </FormControl>
@@ -99,9 +108,22 @@ export function SignUpForm() {
           name="lastName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Last Name</FormLabel>
               <FormControl>
-                <Input placeholder="Doe" type="date" {...field} />
+                <Input placeholder="Doe" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="dueDate"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Due Date</FormLabel>
+              <FormControl>
+                <Input type="date" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -25,12 +25,16 @@ export const SignUpSchema = z
     confirmPassword: z.string(),
     firstName: z.string(),
     lastName: z.string(),
-    dueDate: z.date({
-      invalid_type_error: "Due date must be a valid date.",
-      required_error: "Due date is required.",
-    }),
+    dueDate: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
     path: ["confirmPassword"], // path of error
   });
+
+export const SignInSchema = z.object({
+  email: z.string().email({
+    message: "Email must be a valid email address.",
+  }),
+  password: z.string(),
+});

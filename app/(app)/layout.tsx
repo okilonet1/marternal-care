@@ -1,17 +1,16 @@
-"use client";
+import { validateRequest } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
-import { useRouter } from "next/navigation";
+export default async function ProtectedLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const { user } = await validateRequest();
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
+  if (!user) {
+    return redirect("/");
+  }
 
-  //   if (true) {
-  //     router.push("/sign-in");
-  //   }
-
-  return (
-    <>
-      <main>{children}</main>
-    </>
-  );
+  return <>{children}</>;
 }
