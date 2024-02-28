@@ -18,6 +18,8 @@ import { SignUpSchema } from "@/types";
 import { signUp } from "@/actions/auth.actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { CardItem } from "./ui/3d-card";
+import Link from "next/link";
 
 export function SignUpForm() {
   const router = useRouter();
@@ -46,63 +48,83 @@ export function SignUpForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="janedoe@email.com"
-                  type="email"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input placeholder="****" type="password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="confirmPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Confirm Password</FormLabel>
-              <FormControl>
-                <Input placeholder="****" type="password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="firstName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>First Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Jane" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+        <CardItem
+          translateZ="20"
+          className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+        >
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="janedoe@email.com"
+                    type="email"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </CardItem>
+        <CardItem
+          translateZ="20"
+          className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+        >
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input placeholder="****" type="password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </CardItem>
+        <CardItem
+          translateZ="20"
+          className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+        >
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Confirm Password</FormLabel>
+                <FormControl>
+                  <Input placeholder="****" type="password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </CardItem>
+        <CardItem
+          translateZ="20"
+          className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+        >
+          <FormField
+            control={form.control}
+            name="firstName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>First Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Jane" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </CardItem>
         <FormField
           control={form.control}
           name="lastName"
@@ -116,20 +138,48 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="dueDate"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Due Date</FormLabel>
-              <FormControl>
-                <Input type="date" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
+        <CardItem
+          translateZ="20"
+          className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+        >
+          <FormField
+            control={form.control}
+            name="dueDate"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Due Date</FormLabel>
+                <FormControl>
+                  <Input type="date" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </CardItem>
+        <Button type="submit" className="w-full">
+          Submit
+        </Button>
+        <div className="flex justify-between items-center mt-20">
+          <div onClick={() => router.back()}>
+            <CardItem
+              translateZ={20}
+              as="button"
+              className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+            >
+              Go back
+            </CardItem>
+          </div>
+
+          <Link href="/sign-in">
+            <CardItem
+              translateZ={20}
+              as="button"
+              className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+            >
+              Sign in
+            </CardItem>
+          </Link>
+        </div>
       </form>
     </Form>
   );

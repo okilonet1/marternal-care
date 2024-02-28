@@ -12,7 +12,7 @@ export default function Home() {
       </h1>
       <div className="flex flex-col lg:flex-row items-center justify-center mt-4 gap-4">
         <Link href="/sign-in">
-          <OrdButton className="text-white rounded-[1.75rem] h-[62px] w-[158px] border-slate-800 bg-sky-500/85 hover:bg-transparent hover:border-sky-500/85">
+          <OrdButton className="text-white rounded-[1.75rem] h-[62px] w-[158px] border-slate-800 bg-sky-500/85 hover:bg-transparent hover:border-sky-500/85 animate-shimmer">
             Sign In
           </OrdButton>
         </Link>
