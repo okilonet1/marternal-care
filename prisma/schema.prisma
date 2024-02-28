@@ -24,6 +24,14 @@ model User {
   HealthMetric  HealthMetric[]
   HealthInsight HealthInsight[]
   Session       Session[]
+  createdAt     DateTime        @default(now()) // Timestamp when the user was created
+  updatedAt     DateTime        @updatedAt // Timestamp when the user was last updated
+  role          Role            @default(USER) // User's role (e.g., USER, ADMIN)
+}
+
+enum Role {
+  USER
+  ADMIN
 }
 
 model Session {

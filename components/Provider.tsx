@@ -7,10 +7,10 @@ interface ProviderProps {
 
 const Providers: FC<ProviderProps> = ({ children }) => {
   return (
-    <div>
+    <>
       <Toaster richColors closeButton position="top-right" />
       {children}
-    </div>
+    </>
   );
 };
 

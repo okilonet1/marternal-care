@@ -48,7 +48,7 @@ export const MessagesProvider = ({ children }: { children: ReactNode }) => {
 
   const updateMessage = (
     id: string,
-    updateFn: (prevText: string) => string
+    updateFn: (prevText: string) => string,
   ) => {
     setMessages((prev) =>
       prev.map((message) => {
@@ -56,7 +56,7 @@ export const MessagesProvider = ({ children }: { children: ReactNode }) => {
           return { ...message, text: updateFn(message.text) };
         }
         return message;
-      })
+      }),
     );
   };
 

@@ -47,10 +47,10 @@ export function SignUpForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-8">
         <CardItem
           translateZ="20"
-          className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+          className="w-full text-xl font-bold text-neutral-600 dark:text-white"
         >
           <FormField
             control={form.control}
@@ -72,7 +72,7 @@ export function SignUpForm() {
         </CardItem>
         <CardItem
           translateZ="20"
-          className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+          className="w-full text-xl font-bold text-neutral-600 dark:text-white"
         >
           <FormField
             control={form.control}
@@ -90,7 +90,7 @@ export function SignUpForm() {
         </CardItem>
         <CardItem
           translateZ="20"
-          className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+          className="w-full text-xl font-bold text-neutral-600 dark:text-white"
         >
           <FormField
             control={form.control}
@@ -108,7 +108,7 @@ export function SignUpForm() {
         </CardItem>
         <CardItem
           translateZ="20"
-          className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+          className="w-full text-xl font-bold text-neutral-600 dark:text-white"
         >
           <FormField
             control={form.control}
@@ -139,7 +139,7 @@ export function SignUpForm() {
         />
         <CardItem
           translateZ="20"
-          className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+          className="w-full text-xl font-bold text-neutral-600 dark:text-white"
         >
           <FormField
             control={form.control}
@@ -158,12 +158,12 @@ export function SignUpForm() {
         <Button type="submit" className="w-full">
           Submit
         </Button>
-        <div className="flex justify-between items-center mt-20">
+        <div className="mt-20 flex items-center justify-between">
           <div onClick={() => router.back()}>
             <CardItem
               translateZ={20}
               as="button"
-              className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+              className="rounded-xl px-4 py-2 text-xs font-normal dark:text-white"
             >
               Go back
             </CardItem>
@@ -173,7 +173,7 @@ export function SignUpForm() {
             <CardItem
               translateZ={20}
               as="button"
-              className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+              className="rounded-xl bg-black px-4 py-2 text-xs font-bold text-white dark:bg-white dark:text-black"
             >
               Sign in
             </CardItem>

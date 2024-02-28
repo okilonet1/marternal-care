@@ -9,11 +9,11 @@ interface SignInProps {}
 const SignIn: FC<SignInProps> = ({}) => {
   return (
     <CardContainer className="inter-var my-3">
-      <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black/35 bg-blur-sm dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border items-center justify-center flex flex-col">
+      <CardBody className="group/card bg-blur-sm relative  flex h-auto w-auto flex-col items-center justify-center rounded-xl border border-black/[0.1] bg-gray-50 p-6 dark:border-white/[0.2] dark:bg-black/35 dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] sm:w-[30rem]">
         <Link href="/">
           <CardItem
             translateZ="50"
-            className="text-xl font-bold text-neutral-600 dark:text-white text-center"
+            className="text-center text-xl font-bold text-neutral-600 dark:text-white"
           >
             MaternaAI
           </CardItem>
@@ -22,7 +22,7 @@ const SignIn: FC<SignInProps> = ({}) => {
         <CardItem
           as="p"
           translateZ="60"
-          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+          className="mt-2 max-w-sm text-sm text-neutral-500 dark:text-neutral-300"
         >
           Please fill form to access your account
         </CardItem>
