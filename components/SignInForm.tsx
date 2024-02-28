@@ -19,7 +19,6 @@ import { signIn } from "@/actions/auth.actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { CardItem } from "./ui/3d-card";
-import Image from "next/image";
 import Link from "next/link";
 
 export function SignInForm() {
@@ -33,7 +32,6 @@ export function SignInForm() {
   });
 
   async function onSubmit(values: z.infer<typeof SignInSchema>) {
-    console.log(values);
     const res = await signIn(values);
     if (res.error) {
       toast.error(res.error);

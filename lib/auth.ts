@@ -11,6 +11,7 @@ export const lucia = new Lucia(adapter, {
       secure: process.env.NODE_ENV === "production",
     },
   },
+  getUserAttributes: (user) => user,
 });
 
 export const validateRequest = cache(async () => {
@@ -51,5 +52,14 @@ export const validateRequest = cache(async () => {
 declare module "lucia" {
   interface Register {
     Lucia: typeof lucia;
+    DatabaseUserAttributes: DatabaseUserAttributes;
+  }
+
+  interface DatabaseUserAttributes {
+    id: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    dueDate: string;
   }
 }
