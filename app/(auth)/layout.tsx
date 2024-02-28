@@ -14,7 +14,7 @@ export default async function AuthLayout({
   }
 
   return (
-    <div className="h-[100dvh] relative w-full bg-black flex flex-col items-center justify-center overflow-hidden ">
+    <div className="h-[100dvh] relative w-full flex flex-col items-center justify-center overflow-hidden ">
       <div className="w-full absolute inset-0 h-screen">
         <SparklesCore
           id="tsparticlesfullpage"
