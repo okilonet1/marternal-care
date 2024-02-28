@@ -18,7 +18,7 @@ const ReadPdf: FC<ReadPdfProps> = ({ iframeSrc, className }) => {
 
   return (
     <>
-      {loading && <Spinner className="text-center" size="lg" />}
+      {loading && <Spinner className="text-inherit" size="lg" />}
       <iframe
         src={iframeSrc}
         onLoad={hideSpinner}

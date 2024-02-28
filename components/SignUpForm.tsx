@@ -155,8 +155,12 @@ export function SignUpForm() {
             )}
           />
         </CardItem>
-        <Button type="submit" className="w-full">
-          Submit
+        <Button
+          type="submit"
+          className="w-full"
+          variant={form.formState.isSubmitting ? "outline" : "default"}
+        >
+          {form.formState.isSubmitting ? "Loading..." : "Sign Up"}
         </Button>
         <div className="mt-20 flex items-center justify-between">
           <div onClick={() => router.back()}>

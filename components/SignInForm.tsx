@@ -85,8 +85,13 @@ export function SignInForm() {
           />
         </CardItem>
 
-        <Button type="submit" className="w-full">
-          Login
+        <Button
+          type="submit"
+          className="w-full"
+          disabled={form.formState.isSubmitting}
+          variant={form.formState.isSubmitting ? "outline" : "default"}
+        >
+          {form.formState.isSubmitting ? "Loading..." : "Sign In"}
         </Button>
 
         <div className="mt-20 flex items-center justify-between">
