@@ -79,3 +79,11 @@ export async function uploadFile(file: File, fileName: string) {
     console.log(error.message);
   }
 }
+
+export async function deleteFile(fileId: string) {
+  try {
+    await drive.files.delete({ fileId: fileId });
+  } catch (error: any) {
+    console.log(error.message);
+  }
+}

@@ -1,4 +1,5 @@
 import ReadPdf from "@/components/ReadPdf";
+import prisma from "@/lib/prismadb";
 
 import { FC } from "react";
 
@@ -8,11 +9,26 @@ interface ResourceProps {
   };
 }
 
-const Resource: FC<ResourceProps> = ({ params: { id } }) => {
+async function getResource(id: string) {
+  const res = await prisma.article.findUnique({
+    where: {
+      id,
+    },
+  });
+
+  return res;
+}
+
+const Resource: FC<ResourceProps> = async ({ params: { id } }) => {
+  const article = await getResource(id);
+
   return (
-    <div className="flex h-[100dvh] w-full flex-col items-center">
+    <div className="flex h-[100vh] w-full flex-col items-center">
       <ReadPdf
-        iframeSrc={`https://drive.google.com/file/d/1GgeaPAB-GEI0tXgo_Jnc7x9D2hHG2N-c/preview?embedded=true`}
+        iframeSrc={article!.url!.replace(
+          "/view?usp=drivesdk",
+          "/preview?embedded=true",
+        )}
       />
     </div>
   );

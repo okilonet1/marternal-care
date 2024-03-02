@@ -21,7 +21,7 @@ export async function addResource(formData: FormData) {
     const article = await prisma.article.create({
       data: {
         title: title,
-        url: docUploadedUrl?.webContentLink!,
+        url: docUploadedUrl?.webViewLink!,
         author: author,
         description: description,
       },

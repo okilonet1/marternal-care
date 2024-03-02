@@ -1,4 +1,5 @@
 import AddResourceForm from "@/components/AddResourceForm";
+import ResourceListTable from "@/components/ResourceListTable";
 import SignOut from "@/components/SignOut";
 
 import prisma from "@/lib/prismadb";
@@ -17,8 +18,9 @@ const AdminResources: FC<AdminResourcesProps> = async ({}) => {
   return (
     <div>
       <h1>admin dashboard</h1>
-      <AddResourceForm />
       <SignOut />
+      <AddResourceForm />
+      <ResourceListTable resources={resources} />
     </div>
   );
 };
