@@ -4,6 +4,9 @@ import { cache } from "react";
 import { cookies } from "next/headers";
 // your adapter
 
+import { webcrypto } from "node:crypto";
+globalThis.crypto = webcrypto as Crypto;
+
 export const lucia = new Lucia(adapter, {
   sessionCookie: {
     attributes: {
