@@ -31,7 +31,7 @@ export const signUp = async (values: z.infer<typeof SignUpSchema>) => {
     cookies().set(
       sessionCookie.name,
       sessionCookie.value,
-      sessionCookie.attributes
+      sessionCookie.attributes,
     );
 
     return {
@@ -50,8 +50,6 @@ export const signUp = async (values: z.infer<typeof SignUpSchema>) => {
 };
 
 export const signIn = async (values: z.infer<typeof SignInSchema>) => {
-  const hashedPassword = await new Argon2id().hash(values.password);
-
   try {
     const user = await prisma.user.findUnique({
       where: {
@@ -65,7 +63,7 @@ export const signIn = async (values: z.infer<typeof SignInSchema>) => {
 
     const isValidPassword = await new Argon2id().verify(
       user.password,
-      values.password
+      values.password,
     );
 
     if (!isValidPassword) {
@@ -81,7 +79,7 @@ export const signIn = async (values: z.infer<typeof SignInSchema>) => {
     cookies().set(
       sessionCookie.name,
       sessionCookie.value,
-      sessionCookie.attributes
+      sessionCookie.attributes,
     );
 
     return {
@@ -114,7 +112,7 @@ export const signOut = async () => {
     cookies().set(
       sessionCookie.name,
       sessionCookie.value,
-      sessionCookie.attributes
+      sessionCookie.attributes,
     );
   } catch (error: any) {
     return {

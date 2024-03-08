@@ -9,8 +9,8 @@ const AdminDashboard: FC<DashboardProps> = ({}) => {
   return (
     <div>
       <h1>admin dashboard</h1>
-      <Link href="/admin/resources">
-        <Button>Go to Resources</Button>
+      <Link href="/admin/users">
+        <Button>Go to Users</Button>
       </Link>
       <SignOut />
     </div>
