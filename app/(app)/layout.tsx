@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { MainNav } from "@/components/main-nav";
 import { Search } from "@/components/search";
 import { UserNav } from "@/components/user-nav";
+import Chat from "@/components/Chat";
 
 export default async function ProtectedLayout({
   children,
@@ -18,6 +19,7 @@ export default async function ProtectedLayout({
 
   return (
     <div className="flex-col md:flex">
+      <Chat />
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
           <MainNav className="mx-6 hidden md:flex" />

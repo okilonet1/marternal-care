@@ -17,7 +17,7 @@ export async function MainNav({
       <h2 className="text-3xl font-bold tracking-tight">MaternaAI</h2>
 
       <Link
-        href="/examples/dashboard"
+        href={user?.role !== "ADMIN" ? "/dashboard" : "/admin/dashboard"}
         className="text-sm font-medium transition-colors hover:text-primary"
       >
         Overview
@@ -33,7 +33,7 @@ export async function MainNav({
         </>
       )}
       <Link
-        href="/examples/dashboard"
+        href="/settings"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         Settings
