@@ -19,7 +19,6 @@ export default async function ProtectedLayout({
 
   return (
     <div className="flex-col md:flex">
-      <Chat />
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
           <MainNav className="mx-6 hidden md:flex" />

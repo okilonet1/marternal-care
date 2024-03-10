@@ -25,7 +25,7 @@ export default function DashboardPage() {
           <TabsTrigger value="overview">Overview</TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
@@ -127,17 +127,17 @@ export default function DashboardPage() {
                 </p>
               </CardContent>
             </Card>
-          </div>
+          </div> */}
           <div className="mt-10">
             <PregHealthTips />
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+          {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
             <Card className="col-span-4">
               <CardHeader>
                 <CardTitle>Overview</CardTitle>
               </CardHeader>
-              <CardContent className="pl-2">{/* <Overview /> */}</CardContent>
+              <CardContent className="pl-2"> <Overview /> </CardContent>
             </Card>
             <Card className="col-span-3">
               <CardHeader>
@@ -146,9 +146,11 @@ export default function DashboardPage() {
                   You made 265 sales this month.
                 </CardDescription>
               </CardHeader>
-              <CardContent>{/* <RecentSales /> */}</CardContent>
+              <CardContent>
+               <RecentSales /> 
+              </CardContent>
             </Card>
-          </div>
+          </div> */}
         </TabsContent>
       </Tabs>
     </>
