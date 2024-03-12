@@ -8,6 +8,10 @@ import prisma from "@/lib/prismadb";
 import { lucia, validateRequest } from "@/lib/auth";
 import { cookies } from "next/headers";
 
+import { webcrypto } from "node:crypto";
+
+globalThis.crypto = webcrypto as Crypto;
+
 export const signUp = async (values: z.infer<typeof SignUpSchema>) => {
   const hashedPassword = await new Argon2id().hash(values.password);
 
