@@ -42,14 +42,11 @@ export const columns: ColumnDef<User>[] = [
       <DataTableColumnHeader column={column} title="Name" />
     ),
     cell: ({ row }) => {
-      const name = `${row.getValue("firstName")} ${row.getValue("lastName")}`;
-
-      console.log(row.getValue("firstName"));
-      console.log(row.getAllCells());
-
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate font-medium">{name}</span>
+          <span className="max-w-[500px] truncate font-medium">
+            {row.getValue("name")}
+          </span>
         </div>
       );
     },

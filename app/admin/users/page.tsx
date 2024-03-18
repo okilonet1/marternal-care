@@ -27,11 +27,14 @@ export default async function Users() {
               Here&apos;s a list of your users
             </p>
           </div>
-          {/* <div className="flex items-center space-x-2">
-            <UserNav />
-          </div> */}
         </div>
-        <DataTable data={users} columns={columns} />
+        <DataTable
+          data={users.map((user) => ({
+            ...user,
+            name: `${user.firstName} ${user.lastName}`,
+          }))}
+          columns={columns}
+        />
       </div>
     </>
   );

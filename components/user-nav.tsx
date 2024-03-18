@@ -36,7 +36,7 @@ export async function UserNav() {
             </p>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
+        {/* <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
             Profile
@@ -46,10 +46,10 @@ export async function UserNav() {
             Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
-        </DropdownMenuGroup>
+        </DropdownMenuGroup> */}
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <form action={signOut}>
+        <form action={signOut}>
+          <DropdownMenuItem asChild>
             <Button
               type="submit"
               variant={"ghost"}
@@ -57,9 +57,8 @@ export async function UserNav() {
             >
               Log out
             </Button>
-          </form>
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
+          </DropdownMenuItem>
+        </form>
       </DropdownMenuContent>
     </DropdownMenu>
   );
