@@ -19,8 +19,8 @@ export default async function RootLayout({
 }>) {
   const { user } = await validateRequest();
   return (
-    <html lang="en" className="dark">
-      <body className={inter.className}>
+    <html lang="en" className="dark" suppressHydrationWarning={true}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <Providers>
           {children}
           {!user ? null : <Chat />}

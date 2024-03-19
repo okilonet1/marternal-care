@@ -44,12 +44,17 @@ model Session {
 
 // HealthMetric model
 model HealthMetric {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId // Unique ID for each health metric entry
-  user       User     @relation(fields: [userId], references: [id]) // Relationship with User model
-  userId     String   @db.ObjectId // ID of the user who recorded the health metric
-  metricType String // Type of health metric (e.g., weight, blood pressure)
-  value      Float // Value of the health metric
-  recordedAt DateTime // Timestamp when the metric was recorded
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId // Unique ID for each health metric entry
+  user       User       @relation(fields: [userId], references: [id]) // Relationship with User model
+  userId     String     @db.ObjectId // ID of the user who recorded the health metric
+  metricType MetricType // Type of health metric (e.g., weight, blood pressure)
+  value      String // Value of the health metric
+  createdAt  DateTime   @default(now()) // Timestamp when the health was created
+}
+
+enum MetricType {
+  WEIGHT
+  BLOODPRESSURE
 }
 
 // HealthInsight model

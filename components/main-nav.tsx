@@ -14,7 +14,9 @@ export async function MainNav({
       className={cn("flex items-center space-x-4 lg:space-x-6", className)}
       {...props}
     >
-      <h2 className="text-3xl font-bold tracking-tight">MaternaAI</h2>
+      <Link href="/">
+        <h2 className="text-3xl font-bold tracking-tight">MaternaAI</h2>
+      </Link>
 
       <Link
         href={user?.role !== "ADMIN" ? "/dashboard" : "/admin/dashboard"}

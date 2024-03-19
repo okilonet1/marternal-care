@@ -4,7 +4,8 @@ import { redirect } from "next/navigation";
 import { MainNav } from "@/components/main-nav";
 import { Search } from "@/components/search";
 import { UserNav } from "@/components/user-nav";
-import Chat from "@/components/Chat";
+
+import { AddHealth } from "@/components/addHealthData";
 
 export default async function ProtectedLayout({
   children,
@@ -31,6 +32,7 @@ export default async function ProtectedLayout({
       <div className="flex-1 space-y-4 p-8 pt-6">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+          <AddHealth />
         </div>
         {children}
       </div>

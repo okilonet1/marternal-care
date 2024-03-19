@@ -1,5 +1,3 @@
-import { MainNav } from "@/components/main-nav";
-import { Search } from "@/components/search";
 import {
   Card,
   CardContent,
@@ -8,9 +6,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { UserNav } from "@/components/user-nav";
+
 import { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "User Dashboard",

@@ -39,6 +39,11 @@ export const SignInSchema = z.object({
   password: z.string(),
 });
 
+export const HealthMetricSchema = z.object({
+  metricType: z.enum(["WEIGHT", "BLOODPRESSURE"]),
+  value: z.string(),
+});
+
 export const ResourceUploadSchema = z.object({
   title: z.string().min(3).max(255),
   author: z.string().min(1).max(255).optional(),
