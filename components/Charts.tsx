@@ -15,9 +15,15 @@ import {
 } from "recharts";
 import { CardContent, CardTitle } from "./ui/card";
 import { useHealthMetric } from "@/contexts/healthMetricContext";
+import { formatDateToDDMM } from "@/lib/utils";
 
 export const BloodPressureChart: FC = () => {
   const { healthMetrics } = useHealthMetric();
+
+  const bloodPressure = healthMetrics.bloodPressure.map((data) => ({
+    ...data,
+    date: formatDateToDDMM(data.date),
+  }));
 
   return (
     <Card className="col-span-4">
@@ -29,7 +35,7 @@ export const BloodPressureChart: FC = () => {
           <AreaChart
             width={730}
             height={250}
-            data={healthMetrics.bloodPressure}
+            data={bloodPressure}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
           >
             <defs>
@@ -70,6 +76,11 @@ export const BloodPressureChart: FC = () => {
 
 export const WeightChart: FC = () => {
   const { healthMetrics } = useHealthMetric();
+
+  const weight = healthMetrics.weight.map((data) => ({
+    ...data,
+    date: formatDateToDDMM(data.date),
+  }));
   return (
     <Card className="col-span-4">
       <CardHeader>
@@ -78,7 +89,7 @@ export const WeightChart: FC = () => {
       <CardContent className="pl-2">
         <ResponsiveContainer width="100%" height={350}>
           <AreaChart
-            data={healthMetrics.weight}
+            data={weight}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
           >
             <defs>
@@ -127,16 +138,12 @@ const Charts: FC<ChartsProps> = ({ bloodPressure, weight }) => {
       bloodPressure,
       weight,
     }));
-    console.log({
-      bloodPressure,
-      weight,
-    });
   }, [bloodPressure, weight]);
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-8">
-      <BloodPressureChart />
       <WeightChart />
+      <BloodPressureChart />
     </div>
   );
 };

@@ -28,6 +28,7 @@ import { Input } from "@/components/ui/input";
 import { addHealthMetricToDB } from "@/actions/addMetric.actions";
 import { HealthMetricSchema } from "@/types";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import {
   Select,
   SelectContent,
@@ -35,12 +36,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHealthMetric } from "@/contexts/healthMetricContext";
 
 export function AddHealth() {
   const [open, setOpen] = useState<boolean>(false);
   const { addHealthMetric } = useHealthMetric();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof HealthMetricSchema>>({
     resolver: zodResolver(HealthMetricSchema),
@@ -50,6 +52,8 @@ export function AddHealth() {
     },
   });
 
+  const { isSubmitSuccessful } = form.formState;
+
   async function onSubmit(values: z.infer<typeof HealthMetricSchema>) {
     const res = await addHealthMetricToDB(values);
     if (res.error) {
@@ -58,8 +62,18 @@ export function AddHealth() {
       addHealthMetric(res.data);
       toast.success("Added Successfully");
       setOpen(false);
+
+      router.refresh();
     }
   }
+
+  useEffect(() => {
+    form.reset({
+      metricType: undefined,
+      value: undefined,
+    });
+  }, [isSubmitSuccessful]);
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
